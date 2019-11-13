@@ -50,21 +50,26 @@ function showFollower() {
     })
     .then(data => {
         let list = document.getElementById("list")
-        data.map(({login, avatar_url})=> {
+        data.map(({login, avatar_url, type})=> {
             let li = document.createElement("h3")
             let imageProfileList = document.createElement("img")
+            var spanTypeUser = document.createElement("span")
             let listContainer = document.createElement("div")
-            let titleList = document.createTextNode(login)
+            let titleList = document.createTextNode("@"+login)
+            let typeUser = document.createTextNode(type)
 
+            spanTypeUser.className = "badge badge-secondary"
             listContainer.className = "span3 well"
             imageProfileList.setAttribute("src", avatar_url)
             imageProfileList.style.width = "140px"
             imageProfileList.style.height = "140px"
             imageProfileList.className = "img-circle"
 
+            spanTypeUser.appendChild(typeUser)
             li.appendChild(titleList)
             listContainer.appendChild(imageProfileList)
             listContainer.appendChild(li)
+            listContainer.appendChild(spanTypeUser)
             list.appendChild(listContainer)
         })
     })
@@ -80,21 +85,26 @@ function showFollowing() {
     })
     .then(data => {
         let list = document.getElementById("listFollowing")
-        data.map(({login, avatar_url})=> {
+        data.map(({login, avatar_url, type})=> {
             let li = document.createElement("h3")
             let imageProfileList = document.createElement("img")
+            var spanTypeUser = document.createElement("span")
             let listContainer = document.createElement("div")
-            let titleList = document.createTextNode(login)
+            let titleList = document.createTextNode("@"+login)
+            let typeUser = document.createTextNode(type)
 
             listContainer.className = "span3 well"
+            spanTypeUser.className = "badge badge-secondary"
             imageProfileList.setAttribute("src", avatar_url)
             imageProfileList.style.width = "140px"
             imageProfileList.style.height = "140px"
             imageProfileList.className = "img-circle"
 
+            spanTypeUser.appendChild(typeUser)
             li.appendChild(titleList)
             listContainer.appendChild(imageProfileList)
             listContainer.appendChild(li)
+            listContainer.appendChild(spanTypeUser)
             list.appendChild(listContainer)
         })
     })
